@@ -51,7 +51,7 @@ const projects = [
       "A personal portfolio website showcasing frontend projects, UI design skills, and services. Includes animated sections, dark/light mode, and a modern responsive layout.",
     techStack: ["React", "Chakra UI", "Framer Motion", "Vite"],
     demoLink: "#",
-    codeLink: "#",
+    codeLink: "https://github.com/hiteshasoriya/Portfolio",
     bg: "purple.50",
     darkBg: "purple.900",
     iconColor: "purple.500",
