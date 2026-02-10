@@ -90,7 +90,7 @@ const ContactSection = () => {
           flexDir={{ base: "column", md: "row" }}
         >
           {/* Contact Info */}
-          <Box flex={1}>
+          <Box flex={1} w="full">
             <VStack align="start" spacing={4}>
               <Text color="gray.600">
                 Feel free to reach out for collaborations or project inquiries.
@@ -128,9 +128,9 @@ const ContactSection = () => {
           </Box>
 
           {/* Form */}
-          <Box flex={1}>
+          <Box flex={1} w="full">
             <form ref={formRef} onSubmit={handleSubmit}>
-              <VStack spacing={4}>
+              <VStack spacing={4} w="full">
                 <FormControl isRequired>
                   <FormLabel>Name</FormLabel>
                   <Input name="name" placeholder="Your name" />

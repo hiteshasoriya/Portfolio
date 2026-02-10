@@ -55,21 +55,41 @@ const PhotoIllustrationsCarousel = () => {
   const arrowColor = colorMode === "dark" ? "white" : "black";
   const dotColor = colorMode === "dark" ? "white" : "black";
 
-  const settings = {
-    dots: true,
-    arrows: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2500,
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 3 } },
-      { breakpoint: 768, settings: { slidesToShow: 2 } },
-      { breakpoint: 480, settings: { slidesToShow: 1 } },
-    ],
-  };
+const settings = {
+  dots: true,
+  arrows: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4,      
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2500,
+  pauseOnHover: true,
+  adaptiveHeight: false,
+
+  responsive: [
+    {
+      breakpoint: 1280,  
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 768,   
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 480,    
+      settings: {
+        slidesToShow: 1,
+        arrows: false,   
+      },
+    },
+  ],
+};
+
 
   return (
     <Box as="section" py={24} bg={sectionBg}>
