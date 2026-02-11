@@ -21,13 +21,12 @@ import Original3 from "../assets/OriginalImages/Original_3.jpeg";
 import Original4 from "../assets/OriginalImages/Original_4.jpeg";
 import Original5 from "../assets/OriginalImages/Original_5.jpeg";
 
-
 const MotionBox = motion(Box);
 
 const images = [
   {
     result: Result1,
-    original: Original1
+    original: Original1,
   },
   {
     result: Result2,
@@ -55,23 +54,24 @@ const PhotoIllustrationsCarousel = () => {
   const arrowColor = colorMode === "dark" ? "white" : "black";
   const dotColor = colorMode === "dark" ? "white" : "black";
 
-    // Fix for mobile hover - use click instead
+  // Fix for mobile hover - use click instead
   const [activeIndex, setActiveIndex] = React.useState(null);
-  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 480;
-  const isMediumDevice = typeof window !== 'undefined' && window.innerWidth <= 768;
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 480;
+  const isMediumDevice =
+    typeof window !== "undefined" && window.innerWidth <= 768;
 
-const settings = {
-  dots: true,
-  arrows: isMobile ? false : true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: isMobile ? 1 : isMediumDevice ? 2 : 4,      
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2500,
-  pauseOnHover: true,
-  adaptiveHeight: false,
-};
+  const settings = {
+    dots: true,
+    arrows: isMobile ? false : true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: isMobile ? 1 : isMediumDevice ? 2 : 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2500,
+    pauseOnHover: true,
+    adaptiveHeight: false,
+  };
 
   return (
     <Box as="section" py={24} bg={sectionBg}>
@@ -114,7 +114,10 @@ const settings = {
                 position="relative"
                 h={{ base: "220px", md: "260px" }}
                 whileHover={!isMobile ? "hover" : undefined}
-                onClick={() => (isMobile || isMediumDevice) && setActiveIndex(activeIndex === index ? null : index)}
+                onClick={() =>
+                  (isMobile || isMediumDevice) &&
+                  setActiveIndex(activeIndex === index ? null : index)
+                }
               >
                 {/* Result */}
                 <Image
@@ -124,19 +127,45 @@ const settings = {
                   h="100%"
                   objectFit="cover"
                 />
+                {isMobile || isMediumDevice && (
+                  <Box
+                    position="absolute"
+                    bottom="10px"
+                    left="10px"
+                    bg="blackAlpha.700"
+                    color="white"
+                    px={2}
+                    py={1}
+                    borderRadius="md"
+                    fontSize="xs"
+                    opacity={0.8}
+                    pointerEvents="none"
+                  >
+                    Tap to see original
+                  </Box>
+                )}
 
                 {/* Original - Blur */}
                 <MotionBox
                   position="absolute"
                   inset={0}
                   initial={{ opacity: 0, filter: "blur(10px)" }}
-                  animate={isMobile || isMediumDevice ? { 
-                    opacity: activeIndex === index ? 1 : 0, 
-                    filter: activeIndex === index ? "blur(0px)" : "blur(10px)" 
-                  } : {}}
-                  variants={!isMobile ? {
-                    hover: { opacity: 1, filter: "blur(0px)" },
-                  } : {}}
+                  animate={
+                    isMobile || isMediumDevice
+                      ? {
+                          opacity: activeIndex === index ? 1 : 0,
+                          filter:
+                            activeIndex === index ? "blur(0px)" : "blur(10px)",
+                        }
+                      : {}
+                  }
+                  variants={
+                    !isMobile
+                      ? {
+                          hover: { opacity: 1, filter: "blur(0px)" },
+                        }
+                      : {}
+                  }
                   transition={{ duration: 0.5 }}
                 >
                   <Image
