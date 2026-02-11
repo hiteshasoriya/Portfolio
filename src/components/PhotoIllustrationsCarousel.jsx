@@ -127,7 +127,7 @@ const PhotoIllustrationsCarousel = () => {
                   h="100%"
                   objectFit="cover"
                 />
-                {isMobile || isMediumDevice && (
+                {(isMobile || isMediumDevice) && (
                   <Box
                     position="absolute"
                     bottom="10px"
